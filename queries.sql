@@ -77,25 +77,8 @@ row_num INT
 );
 
 INSERT INTO `layoffs`.`layoffs_staging2`
-(`company`,
-`location`,
-`industry`,
-`total_laid_off`,
-`percentage_laid_off`,
-`date`,
-`stage`,
-`country`,
-`funds_raised_millions`,
-`row_num`)
-SELECT `company`,
-`location`,
-`industry`,
-`total_laid_off`,
-`percentage_laid_off`,
-`date`,
-`stage`,
-`country`,
-`funds_raised_millions`,
+(`company`, `location`, `industry`, `total_laid_off`, `percentage_laid_off`, `date`, `stage`, `country`, `funds_raised_millions`, `row_num`)
+SELECT `company`, `location`, `industry`, `total_laid_off`, `percentage_laid_off`, `date`, `stage`, `country`, `funds_raised_millions`,
 		ROW_NUMBER() OVER (
 			PARTITION BY company, location, industry, total_laid_off,percentage_laid_off,`date`, stage, country, funds_raised_millions
             ) AS row_num
